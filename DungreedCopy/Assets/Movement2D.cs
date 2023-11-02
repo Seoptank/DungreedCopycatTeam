@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< Updated upstream
 
+=======
+// ½Â¼®ÀÌ °³ ¾¾¹ß»õ³¢
+>>>>>>> Stashed changes
 public class Movement2D : MonoBehaviour
 {
 
