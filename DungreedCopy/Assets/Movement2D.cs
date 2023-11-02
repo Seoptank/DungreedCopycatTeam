@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//김형SUuuuuuuuuuuuiiiiiiiiiii
+//존나게 자고싶다 시발 ㅜㅜㅜㅜㅜ
 public class Movement2D : MonoBehaviour
 {
 
