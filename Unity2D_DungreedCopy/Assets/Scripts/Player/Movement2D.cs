@@ -31,16 +31,11 @@ public class Movement2D : MonoBehaviour
 
     [Header("´ë½¬")]
     public bool                 isDashing = false;
+    public float                dashDis = 3.0f;
     [SerializeField]
     private float               dashSpeed = 10.0f;
     [SerializeField]
-    private float               dashDis = 5.0f;
-    [SerializeField]
     private float               delayTime = 1.0f;
-    [SerializeField]
-    private Vector3             dashDir;
-    [SerializeField]
-    private Vector3             mousePos;
 
 
     
@@ -98,10 +93,6 @@ public class Movement2D : MonoBehaviour
         {
             rigidbody.gravityScale = highGravity;
         }
-
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        dashDir = (mousePos - transform.position).normalized;
-        Debug.Log(dashDir);
     }
 
     public void MoveTo(float x)
@@ -122,13 +113,22 @@ public class Movement2D : MonoBehaviour
         return false;
     }
 
-    public IEnumerator DashToMouse()
+    public IEnumerator DashTo(Vector3 des)
     {
         isDashing = true;
 
-        rigidbody.velocity = dashDir * dashSpeed;
-        yield return new WaitForSeconds(delayTime);
+        float dis           = Vector3.Distance(transform.position, des);
+        float step          = (dashSpeed/dis) * Time.fixedDeltaTime;
+        float t             = 0f;
 
+        Vector3 startingPos = transform.position;
+
+        while (t <=  1.0f)
+        {
+            t += step;
+            rigidbody.MovePosition(Vector3.Lerp(startingPos, des, t));
+            yield return new WaitForFixedUpdate();
+        }
         isDashing = false;
     }
 
@@ -139,5 +139,10 @@ public class Movement2D : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawSphere(footPos, 0.02f);
+        
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, dashDis);
+
+
     }
 }

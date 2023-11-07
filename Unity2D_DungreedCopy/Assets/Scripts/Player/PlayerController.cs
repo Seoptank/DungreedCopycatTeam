@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public float            lastMoveDir;
     [SerializeField]
-    public Vector2          mousePos;
+    public Vector3          mousePos;
 
     [SerializeField]
     private KeyCode         jumpKey = KeyCode.Space;
@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         UpdateMove();
         UpdateJump();
         UpdateSight();
@@ -42,7 +44,6 @@ public class PlayerController : MonoBehaviour
 
         if (movement.isDashing) return;
 
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     //======================================================================================
@@ -87,10 +88,14 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateDash()
     {
-        //if(Input.GetKeyDown(dashKey) && !movement.isDashing)
-        //{
-        //    movement.StartCoroutine("DashToMouse");
-        //}
+        if(Input.GetKeyDown(dashKey) && movement.isDashing == false)
+        {
+            mousePos.z = 0;
+            Vector3 dir = mousePos - transform.position;
+            Vector3 moveTarget = transform.position + Vector3.ClampMagnitude(dir, movement.dashDis);
+
+            StartCoroutine(movement.DashTo(moveTarget));
+        }
     }
 
     //======================================================================================
