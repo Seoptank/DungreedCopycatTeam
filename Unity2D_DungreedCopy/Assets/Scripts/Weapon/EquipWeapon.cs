@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EquipWeapon : MonoBehaviour
 {
+    //zzzz
     [Header("무기 종류")]
     private KeyCode weapon1 = KeyCode.Alpha1;
     public GameObject[] Weapons;
