@@ -12,6 +12,7 @@ public class BossHandAttack : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        Debug.Log("zzzz");
     }
 
     public void StartAttackAni()
