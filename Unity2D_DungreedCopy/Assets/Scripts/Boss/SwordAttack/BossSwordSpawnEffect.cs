@@ -11,12 +11,9 @@ public class BossSwordSpawnEffect : MonoBehaviour
     private PoolManager thisPoolManager;
     private PoolManager SwordPoolManager;
 
-    private BossPattern boss;
     private void Awake()
     {
         SwordPoolManager = new PoolManager(SwordPrefab);
-
-        boss = FindObjectOfType<BossPattern>();
     }
     public void Setup(PoolManager poolManager)
     {
@@ -32,7 +29,5 @@ public class BossSwordSpawnEffect : MonoBehaviour
         sword.transform.position = transform.position;
         sword.transform.rotation = transform.rotation;
         sword.GetComponent<BossSword>().Setup(SwordPoolManager);
-        boss.swordList.Add(sword);
-        Debug.Log(boss.swordList);
     }
 }

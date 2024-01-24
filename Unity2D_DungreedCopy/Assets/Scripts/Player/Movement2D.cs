@@ -57,7 +57,7 @@ public class Movement2D : MonoBehaviour
     
     [Header("Dash")]
     public bool             isDashing = false;
-    public float            dashDis = 3.0f;
+    public float            dashDis = 5.0f;
     [SerializeField]
     private float           dashSpeed = 20.0f;
     public float            ghostDelay;
