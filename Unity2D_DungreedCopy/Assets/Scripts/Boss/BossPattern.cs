@@ -53,7 +53,6 @@ public class BossPattern : MonoBehaviour
     private float               waitForOneRoutaionTime;     // 한루틴이 끝나는 시간동안 기다릴 시간
     [SerializeField]
     private float               moveTime;                   // 손이 이동하는 시간
-    public bool                 isHandAttack;
 
     private GameObject          player;
     
@@ -66,8 +65,7 @@ public class BossPattern : MonoBehaviour
     }
     private void Start()
     {
-        //ChangeBossState(BossState.HeadAttack);
-        ChangeBossState(BossState.HandsAttack);
+
     }
 
     private void Update()
