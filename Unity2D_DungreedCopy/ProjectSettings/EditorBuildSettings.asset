@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene(YS)/SkelBoss.unity
     guid: 265b57cbb8cdcb54c93435883db23833
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: d37ad6ec74659aa49b6423ad4d721275
   m_configObjects: {}

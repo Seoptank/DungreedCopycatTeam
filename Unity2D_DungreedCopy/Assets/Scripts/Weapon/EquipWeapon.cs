@@ -55,10 +55,31 @@ public class EquipWeapon : MonoBehaviour
             Weapons[currentWeapon1code].SetActive(false);
             equipWeapon = -1;
         }
+        else if (equipWeapon == 15 && currentWeapon1code != EquipItem1.Code)
+        {
+            Weapons[currentWeapon1code].SetActive(false);
+            currentWeapon1code = EquipItem1.Code;
+            Weapons[EquipItem1.Code].SetActive(true);
+            PlayerStats.instance.WP_MINATK = EquipItem1.MinDamage;
+            PlayerStats.instance.WP_MAXATK = EquipItem1.MaxDamage;
+            PlayerStats.instance.WP_ATS = EquipItem1.AttckSpeed;
+            PlayerController.instance.canAttack = true;
+        }
+
         if (equipWeapon == 16 && EquipItem2 == null)
         {
             Weapons[currentWeapon2code].SetActive(false);
             equipWeapon = -1;
+        }
+        else if (equipWeapon == 16 && currentWeapon2code != EquipItem2.Code)
+        {
+            Weapons[currentWeapon2code].SetActive(false);
+            currentWeapon2code = EquipItem2.Code;
+            Weapons[EquipItem2.Code].SetActive(true);
+            PlayerStats.instance.WP_MINATK = EquipItem2.MinDamage;
+            PlayerStats.instance.WP_MAXATK = EquipItem2.MaxDamage;
+            PlayerStats.instance.WP_ATS = EquipItem2.AttckSpeed;
+            PlayerController.instance.canAttack = true;
         }
     }
 
